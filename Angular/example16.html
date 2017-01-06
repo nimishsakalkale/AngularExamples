@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html ng-app="ngApp">
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.1/angular.min.js"></script>
+    <script type="text/javascript">
+        var ngApp = angular.module("ngApp", []);
+        ngApp.controller("arrayController", function ($scope) {
+            $scope.arrayList = ["Nimish", "sanket", "sameer"];
+            $scope.add = function()
+            {
+                $scope.arrayList.push($scope.submitValue);
+                $scope.submitValue = "";
+            };
+        });
+    </script>
+</head>
+<body ng-controller="arrayController">
+    <ul>
+        <li ng-repeat="value in arrayList"> {{value}}  </li>
+    </ul>
+    <form ng-submit="add()">
+        <input type="text" ng-model="submitValue" />
+        <input type="submit" value="add" />
+    </form>
+</body>
+</html>

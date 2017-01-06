@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html ng-app="ngApp">
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.1/angular.min.js"></script>
+    <script type="text/javascript">
+        var ngApp = angular.module("ngApp", []);
+        ngApp.controller("nameController", function ($scope)
+        {
+            $scope.values = ["sanket", "nimish", "sameer"];
+        });
+
+    </script>
+</head>
+<body ng-controller="nameController">
+    <ul>
+        <li ng-repeat="value in values"> {{value}}</li>
+    </ul>
+
+</body>
+</html>
