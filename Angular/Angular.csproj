@@ -66,6 +66,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="country-detail.html" />
+    <Content Include="country-list.html" />
     <Content Include="Example14.html" />
     <Content Include="Example15.html" />
     <Content Include="example16.html" />
@@ -73,7 +75,11 @@
     <Content Include="example18.html" />
     <Content Include="example20.html" />
     <Content Include="example21.html" />
+    <Content Include="Example25.html" />
+    <Content Include="Example26.html" />
+    <Content Include="Example35.html" />
     <Content Include="packages.config" />
+    <Content Include="Countries1.json" />
     <Content Include="Countries.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
