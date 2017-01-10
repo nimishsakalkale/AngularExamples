@@ -1,0 +1,61 @@
+﻿
+<html ng-app="countryApp">
+<head>
+    <meta charset="utf-8">
+    <title>Angular.js Example</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.10/angular.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.10/angular-route.min.js"></script>
+    <script>
+        var countryApp = angular.module("countryApp", ['ngRoute']);
+        countryApp.config(function ($routeProvider) {
+            $routeProvider.when("/",
+                {
+                    templateUrl: "country-list.html",
+                    controller: "CountryListCtrl"
+                }).when("/:countryName",
+                {
+                    templateUrl: "country-detail.html",
+                    controller: "CountryDetailCtrl"
+                }
+                ).otherwise({
+                    redirectTo: '/'
+                });
+        });
+
+        countryApp.factory("countriesFactory", function ($http) {
+            return {
+                list: function (callback) {
+                    $http.get("Countries.json").success(callback);
+                },
+                countryData : function(name,callBack)
+                {
+                    $http.get("Countries.json").success(function (data) {
+                        var country = data.filter(function (entry) {
+                            //console.log(entry.name);
+                            //console.log(name);
+                            return entry.name === name;
+                        })[0];
+                        callBack(country);
+                    });
+                }
+            };
+        });
+        countryApp.controller("CountryListCtrl", function ($scope, $http, countriesFactory)
+        {
+            countriesFactory.list(function (countries)
+            {
+                $scope.countries = countries;
+            })
+        });
+
+        countryApp.controller("CountryDetailCtrl", function ($scope, $routeParams, countriesFactory) {
+            countriesFactory.countryData($routeParams.countryName, function (country) {
+                $scope.country = country;
+            });
+        });
+    </script>
+</head>
+<body>
+    <div ng-view></div>
+</body>
+</html>
