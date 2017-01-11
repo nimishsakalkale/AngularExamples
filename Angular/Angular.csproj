@@ -80,6 +80,8 @@
     <Content Include="Example35.html" />
     <Content Include="Example41.html" />
     <Content Include="Example42.html" />
+    <Content Include="Example43.html" />
+    <Content Include="Example44.html" />
     <Content Include="packages.config" />
     <Content Include="Countries1.json" />
     <Content Include="Countries.json" />
